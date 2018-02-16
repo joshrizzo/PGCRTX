@@ -1,3 +1,5 @@
 @model List<Product>
 
-@Html.DisplayForModel()
+@foreach (var item in Model) {
+    @Html.DisplayFor(m => item)
+}

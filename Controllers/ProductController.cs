@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,25 @@ namespace PGCRTX.Controllers
         public IActionResult List()
         {
             var model = database.Products.ToList();
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(Guid Id)
+        {
+            var model = database.Products.Single(prod => prod.ID == Id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product model)
+        {
+            var orig = database.Products.Single(prod => prod.ID == model.ID);
+            orig.Name = model.Name;
+            orig.Cost = model.Cost;
+            database.SaveChanges();
 
             return View(model);
         }
