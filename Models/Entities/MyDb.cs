@@ -1,10 +1,12 @@
+using DotNetXPlat.Models;
 using JetBrains.Annotations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PGCRTX.Models;
 
 namespace PGCRTX.Models
 {
-    public class MyDb : DbContext
+    public class MyDb : IdentityDbContext
     {
         public MyDb(DbContextOptions options) : base(options)
         {
@@ -37,5 +39,6 @@ namespace PGCRTX.Models
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
