@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotNetXPlat.Models;
+using PGCRTX.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PGCRTX.Controllers;
-using PGCRTX.Models;
 
 namespace PGCRTX
 {
@@ -34,6 +33,11 @@ namespace PGCRTX
             services.AddAuthentication();
 
             services.AddMvc();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("EditProduct", policy => policy.RequireClaim("EditProductClaim"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,8 +1,7 @@
-using DotNetXPlat.Models;
+using PGCRTX.Models;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PGCRTX.Models;
 
 namespace PGCRTX.Models
 {
